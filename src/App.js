@@ -3,55 +3,51 @@
 import { useState } from "react";
 
 function App() {
-  const [quests, setQuests] = useState(() => {
-    const storageQuests = JSON.parse(localStorage.getItem('jobs'))
-    return storageQuests ?? []
+  const [task, setTask] = useState('')
+  const [tasks, setTasks] = useState(() => {
+    const storageTasks = JSON.parse(localStorage.getItem('Tasks'))
+
+    return storageTasks ?? []
   })
-  const [quest, setQuest] = useState('')
-  const [index, setIndex] = useState('')
-  
+
   const handleSubmit = () => {
-    setQuests(prev => {
-      const newQuests = [...prev, quest]
+    if (!task) return;
+    setTasks(prev => {
+      const newTasks = [...prev, task]
 
-      // save to localStorage
-      const jsonQuests = JSON.stringify(newQuests)
-      localStorage.setItem('jobs', jsonQuests)
+      const jsonTasks = JSON.stringify(newTasks)
+      localStorage.setItem('Tasks', jsonTasks)
 
-      return newQuests
+      return newTasks
     })
-    setQuest('')
+    setTask('')
   }
 
-  const handleDelete = () => {
-    quests.shift()
-    // console.log(quests)
-    setQuests(prev => {
-      const newQuests = [...prev, index]
-
-      // save to localStorage
-      const jsonQuests = JSON.stringify(newQuests)
-      localStorage.setItem('jobs', jsonQuests)
-
-      return newQuests
-    })
+  const handleDelete = (curTask) => {
+    const tasksList = tasks.filter((task) => (task !== curTask))
+    setTasks(tasksList)
+    localStorage.setItem('Tasks', tasksList)
   }
 
   return (
     <div className="App" style={{ padding: 32 }}>
-      <h2>todos</h2>
+      <h1>todos</h1>
       <input 
-        value={quest}
-        onChange={e => setQuest(e.target.value)}
+        value={task} 
+        onChange={e => setTask(e.target.value)}
       />
-      <button onClick={handleSubmit}>Add</button>
+      <button onClick={handleSubmit}>
+        Add
+      </button>
 
       <ul>
-        {quests.map((quest, index) => (
-          <div key={index}>
-            <li>{quest}</li>
-            <button onClick={handleDelete}>Cút</button>
-          </div>
+        {tasks.map((task, index) => (
+          <li key={index}>
+            {task}
+            <button onClick={() => handleDelete(task)}>
+              Cút
+            </button>
+          </li>
         ))}
       </ul>
     </div>
