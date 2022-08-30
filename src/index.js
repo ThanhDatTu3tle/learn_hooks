@@ -4,6 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// fake comments
+function emitComments(id) {
+  setInterval(() => {
+    window.dispatchEvent(
+      new CustomEvent(`lesson-${id}`, {
+        detail: `Nội dung comment của lesson ${id}`
+      })
+    )
+  }, 2000)
+}
+
+emitComments(1)
+emitComments(2)
+emitComments(3)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <App />

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 
 // 1. useEffect(callback)
 // - Gọi callback mỗi khi component re-render
@@ -20,12 +20,13 @@ function Timer() {
 
   const [count, setCount] = useState(1)
 
-  useEffect(() => {
-    console.log(`Mounted or Unmounted`)
+  useLayoutEffect(() => {
+    if (count > 3) 
+      setCount(0)
 
-    return () => {
-      console.log(`Cleanup`)
-    }
+    // return () => {
+    //   console.log(`Cleanup`)
+    // }
   }, [count])
 
   return (
