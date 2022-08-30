@@ -12,6 +12,7 @@ import Countdown from "./component/Countdown";
 import Memo from "./component/Memo";
 import UseCallback from './component/UseCallback';
 import UseMemo from './component/UseMemo';
+import UseReducer from './component/UseReducer';
 
 function App() {
   const [showContent, setShowContent] = useState(false)
@@ -22,6 +23,7 @@ function App() {
   const [showMemo, setShowMemo] = useState(false)
   const [showUseCallback, setShowUseCallback] = useState(false)
   const [showUseMemo, setShowUseMemo] = useState(false)
+  const [showUseReducer, setShowUseReducer] = useState(false)
 
   return (
     <div className="App" style={{ padding: 33 }}>
@@ -48,6 +50,9 @@ function App() {
 
       <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowUseMemo(!showUseMemo)}>Toggle UseMemo</Button>
       {showUseMemo && <UseMemo/>}
+
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowUseReducer(!showUseReducer)}>Toggle UseReducer</Button>
+      {showUseReducer && <UseReducer/>}
     </div>
   );
 }
