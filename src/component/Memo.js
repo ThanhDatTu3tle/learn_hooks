@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { useState } from "react";
 import ContentMemo from "./ContentMemo";
 
 // 1. memo() => Higher Order Component (HOC)

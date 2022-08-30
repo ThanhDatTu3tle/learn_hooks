@@ -5,7 +5,7 @@ function ContentMemo() {
 
     return (
         <div>
-            <h1>Ngu</h1>
+            <h1>Content Memo</h1>
         </div>
     )
 }

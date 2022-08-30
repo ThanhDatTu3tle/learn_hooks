@@ -1,16 +1,16 @@
 // import logo from './logo.svg';
 // import './App.css';
 // import * as React from 'react';
-// import Content from './component/Content';
-// import Button from '@mui/material/Button';
+import Button from '@mui/material/Button';
 // import Input from '@mui/material/Input';
 import { useState } from "react";
 import Content from "./component/Content";
 import Timer from "./component/Timer";
 import PreviewAvatar from "./component/PreviewAvatar";
-import FakechatApp from "./component/FakeChatApp";
+import FakeChatApp from "./component/FakeChatApp";
 import Countdown from "./component/Countdown";
 import Memo from "./component/Memo";
+import UseCallback from './component/UseCallback';
 
 function App() {
   const [showContent, setShowContent] = useState(false)
@@ -19,25 +19,30 @@ function App() {
   const [showFakeChatApp, setShowFakeChatApp] = useState(false)
   const [showCountdown, setShowCountdown] = useState(false)
   const [showMemo, setShowMemo] = useState(false)
+  const [showUseCallback, setShowUseCallback] = useState(false)
 
   return (
-    <div className="App" style={{ padding: 55 }}>
-      <button onClick={() => setShowContent(!showContent)}>Toggle Content</button>
+    <div className="App" style={{ padding: 33 }}>
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowContent(!showContent)}>Toggle Content</Button>
       {showContent && <Content/>}
-      <span> </span>
-      <button onClick={() => setShowTimer(!showTimer)}>Toggle Timer</button>
+      
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowTimer(!showTimer)}>Toggle Timer</Button>
       {showTimer && <Timer/>}
-      <span> </span>
-      <button onClick={() => setShowPreviewAvatar(!showPreviewAvatar)}>Toggle PreviewAvatar</button>
+      
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowPreviewAvatar(!showPreviewAvatar)}>Toggle PreviewAvatar</Button>
       {showPreviewAvatar && <PreviewAvatar/>}
-      <span> </span>
-      <button onClick={() => setShowFakeChatApp(!showFakeChatApp)}>Toggle FakeChatApp</button>
-      {showFakeChatApp && <FakechatApp/>}
-      <span> </span>
-      <button onClick={() => setShowCountdown(!showCountdown)}>Toggle Countdown</button>
+      
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowFakeChatApp(!showFakeChatApp)}>Toggle FakeChatApp</Button>
+      {showFakeChatApp && <FakeChatApp/>}
+      
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowCountdown(!showCountdown)}>Toggle Countdown</Button>
       {showCountdown && <Countdown/>}
-      <button onClick={() => setShowMemo(!showMemo)}>Toggle Memo</button>
+
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowMemo(!showMemo)}>Toggle Memo</Button>
       {showMemo && <Memo/>}
+
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowUseCallback(!showUseCallback)}>Toggle UseCallback</Button>
+      {showUseCallback && <UseCallback/>}
     </div>
   );
 }
