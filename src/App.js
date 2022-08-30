@@ -11,6 +11,7 @@ import FakeChatApp from "./component/FakeChatApp";
 import Countdown from "./component/Countdown";
 import Memo from "./component/Memo";
 import UseCallback from './component/UseCallback';
+import UseMemo from './component/UseMemo';
 
 function App() {
   const [showContent, setShowContent] = useState(false)
@@ -20,6 +21,7 @@ function App() {
   const [showCountdown, setShowCountdown] = useState(false)
   const [showMemo, setShowMemo] = useState(false)
   const [showUseCallback, setShowUseCallback] = useState(false)
+  const [showUseMemo, setShowUseMemo] = useState(false)
 
   return (
     <div className="App" style={{ padding: 33 }}>
@@ -43,6 +45,9 @@ function App() {
 
       <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowUseCallback(!showUseCallback)}>Toggle UseCallback</Button>
       {showUseCallback && <UseCallback/>}
+
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowUseMemo(!showUseMemo)}>Toggle UseMemo</Button>
+      {showUseMemo && <UseMemo/>}
     </div>
   );
 }
