@@ -10,6 +10,7 @@ import Timer from "./component/Timer";
 import PreviewAvatar from "./component/PreviewAvatar";
 import FakechatApp from "./component/FakeChatApp";
 import Countdown from "./component/Countdown";
+import Memo from "./component/Memo";
 
 function App() {
   const [showContent, setShowContent] = useState(false)
@@ -17,6 +18,7 @@ function App() {
   const [showPreviewAvatar, setShowPreviewAvatar] = useState(false)
   const [showFakeChatApp, setShowFakeChatApp] = useState(false)
   const [showCountdown, setShowCountdown] = useState(false)
+  const [showMemo, setShowMemo] = useState(false)
 
   return (
     <div className="App" style={{ padding: 55 }}>
@@ -34,6 +36,8 @@ function App() {
       <span> </span>
       <button onClick={() => setShowCountdown(!showCountdown)}>Toggle Countdown</button>
       {showCountdown && <Countdown/>}
+      <button onClick={() => setShowMemo(!showMemo)}>Toggle Memo</button>
+      {showMemo && <Memo/>}
     </div>
   );
 }
