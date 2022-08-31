@@ -13,6 +13,7 @@ import Memo from "./component/Memo";
 import UseCallback from './component/UseCallback';
 import UseMemo from './component/UseMemo';
 import UseReducer from './component/UseReducer';
+import AdvancedTodolist from './component/AdvancedTodolist';
 
 function App() {
   const [showContent, setShowContent] = useState(false)
@@ -24,6 +25,7 @@ function App() {
   const [showUseCallback, setShowUseCallback] = useState(false)
   const [showUseMemo, setShowUseMemo] = useState(false)
   const [showUseReducer, setShowUseReducer] = useState(false)
+  const [showAdvancedTodolist, setShowAdvancedTodolist] = useState(false)
 
   return (
     <div className="App" style={{ padding: 33 }}>
@@ -53,6 +55,9 @@ function App() {
 
       <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowUseReducer(!showUseReducer)}>Toggle UseReducer</Button>
       {showUseReducer && <UseReducer/>}
+
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowAdvancedTodolist(!showAdvancedTodolist)}>Toggle AdvancedTodolist</Button>
+      {showAdvancedTodolist && <AdvancedTodolist/>}
     </div>
   );
 }
