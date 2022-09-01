@@ -1,5 +1,4 @@
-import Input from '@mui/material/Input';
-import { Button } from '@mui/material';
+import { Button, Input } from '@mui/material';
 import { useReducer } from "react";
 
 // useReducer
