@@ -1,11 +1,12 @@
-import { Button, Input } from '@mui/material';
-import { useReducer } from "react";
+import { Button, Input, inputAdornmentClasses } from '@mui/material';
+import { handleBreakpoints } from '@mui/system';
+import { useReducer, useRef, useEffect } from "react";
 
 // useReducer
 // 1. Init state
 const initState = {
   task: '',
-  tasks: []
+  tasks: JSON.parse(localStorage.getItem('tasks')) ?? []
 }
 // 2. Actions
 const SET_TASK = 'set_task'
@@ -41,14 +42,15 @@ const reducer = (state, action) => {
     case SET_TASK:
       newState = {
         ...state,
-        task: action.payload
+        task: action.payload,
       }
       break
     case ADD_TASK:
       newState = {
         ...state,
-        tasks: [...state.tasks, action.payload]
+        tasks: [...state.tasks, action.payload],
       }
+      localStorage.setItem('tasks', JSON.stringify(newState.tasks))
       break
     case DELETE_TASK:
       const newTasks = [...state.tasks]
@@ -56,8 +58,9 @@ const reducer = (state, action) => {
 
       newState = {
         ...state,
-        tasks: newTasks
+        tasks: newTasks,
       }
+      localStorage.setItem('tasks', JSON.stringify(newState.tasks))
       break
     default:
       throw new Error(`Invalid action!`)
@@ -73,22 +76,48 @@ function AdvancedTodolist() {
   const [state, dispatch] = useReducer(reducer, initState)
   const { task, tasks } = state
 
+  const buttonRef = useRef()
+  const inputRef = useRef()
+
   const handleSubmit = () => {
-    dispatch(addTask(task))
-    dispatch(setTask(''))
+    if(task)
+      dispatch(addTask(task))
+      dispatch(setTask(''))
+      
+      inputRef.current.focus()
   }
+
+  useEffect(() => {
+    const handleBtnAdd = (e) => {
+      // console.log(e)
+      e.code === 'Enter' && buttonRef.current.click()
+    }
+    window.addEventListener('keydown', handleBtnAdd)
+
+    return () => {
+      window.removeEventListener('keydown', handleBtnAdd)
+    }
+  }, [])
 
   return (
     <div>
       <h2>Todos</h2>
       <Input 
+        ref={inputRef}
         value={task}
         placeholder="Enter task..."
         onChange={e => {
           dispatch(setTask(e.target.value))
         }}
       />
-      <Button onClick={handleSubmit} variant="contained">Add</Button>
+      <Button 
+       ref={buttonRef}
+        style={{ margin: 3, fontSize: 10 }} 
+        onClick={handleSubmit} 
+        variant="contained"
+      >
+        Add
+      </Button>
       <ul>
         {tasks.map((task, index) => (
           <li key={index}>
