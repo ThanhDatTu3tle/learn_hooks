@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 // import * as React from 'react';
 import Button from '@mui/material/Button';
 // import Input from '@mui/material/Input';
@@ -14,6 +14,7 @@ import UseCallback from './component/UseCallback';
 import UseMemo from './component/UseMemo';
 import UseReducer from './component/UseReducer';
 import AdvancedTodolist from './component/AdvancedTodolist';
+import UseContext from './component/UseContext';
 
 function App() {
   const [showContent, setShowContent] = useState(false)
@@ -26,6 +27,7 @@ function App() {
   const [showUseMemo, setShowUseMemo] = useState(false)
   const [showUseReducer, setShowUseReducer] = useState(false)
   const [showAdvancedTodolist, setShowAdvancedTodolist] = useState(false)
+  const [showUseContext, setShowUseContext] = useState(false)
 
   return (
     <div className="App" style={{ padding: 33 }}>
@@ -58,6 +60,9 @@ function App() {
 
       <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowAdvancedTodolist(!showAdvancedTodolist)}>Toggle AdvancedTodolist</Button>
       {showAdvancedTodolist && <AdvancedTodolist/>}
+
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowUseContext(!showUseContext)}>Toggle UseContext</Button>
+      {showUseContext && <UseContext/>}
     </div>
   );
 }

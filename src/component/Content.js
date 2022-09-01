@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 
 // 1. useEffect(callback)
 // - Gọi callback mỗi khi component re-render
@@ -40,6 +41,8 @@ function Content() {
   const [contents, setContents] = useState([])
   const [showGoToTop, setShowGoToTop] = useState(false)
 
+  const context = useContext(ThemeContext)
+
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/${types}`)
       .then(res => res.json())
@@ -66,7 +69,7 @@ function Content() {
   }, [])
 
   return (
-    <div>
+    <div className={context.theme}>
       {tabs.map(tab => (
         <button 
           key={tab}
