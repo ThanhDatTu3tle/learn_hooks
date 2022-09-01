@@ -1,5 +1,4 @@
 import { Button, Input, inputAdornmentClasses } from '@mui/material';
-import { handleBreakpoints } from '@mui/system';
 import { useReducer, useRef, useEffect } from "react";
 
 // useReducer
@@ -13,21 +12,21 @@ const SET_TASK = 'set_task'
 const ADD_TASK = 'add_task'
 const DELETE_TASK = 'delete_task'
 
-const setTask = payload => {
+const setTask = (payload) => {
   return {
     type: SET_TASK,
     payload
   }
 }
 
-const addTask = payload => {
+const addTask = (payload) => {
   return {
     type: ADD_TASK,
     payload
   }
 }
 
-const deleteTask = payload => {
+const deleteTask = (payload) => {
   return {
     type: DELETE_TASK,
     payload
