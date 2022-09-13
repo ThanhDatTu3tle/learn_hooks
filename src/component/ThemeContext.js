@@ -9,6 +9,8 @@ function ThemeProvider({ children }) {
         setTheme(theme === 'dark' ? 'light' : 'dark')
     }
 
+    // console.log("Theme nè đcm: ", theme)
+
     const value = {
         theme,
         toggleTheme

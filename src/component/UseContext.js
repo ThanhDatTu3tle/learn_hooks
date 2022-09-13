@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import Paragraph from "./Paragraph"
-import { ThemeProvider, ThemeContext } from './ThemeContext';
+import Paragraph from "./Paragraph";
+import { ThemeContext } from './ThemeContext';
 
 // Context
 // CompA => CompB => CompC
 
+// 3 steps to use useContext:
 // 1. Create Context
 // export const ThemeContext = createContext()
 
@@ -17,13 +18,13 @@ function UseContext() {
     const context = useContext(ThemeContext)
 
     return (
-        <ThemeProvider>
+        // <ThemeProvider>
             <div>
-                <button onclick={context.toggleTheme}>Toggle Theme</button>
+                <button onClick={context.toggleTheme}>Toggle Theme</button>
                 <Paragraph />
             </div>
-        </ThemeProvider>
+        // </ThemeProvider>
     )
-}
+}   
 
 export default UseContext

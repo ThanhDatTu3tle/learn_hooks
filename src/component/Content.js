@@ -1,3 +1,4 @@
+// import '../App.css';
 import { useState, useEffect, useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
 
@@ -106,4 +107,4 @@ function Content() {
   )
 }
 
-export default Content;
+export default Content
