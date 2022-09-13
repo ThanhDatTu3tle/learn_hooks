@@ -15,6 +15,7 @@ import UseMemo from './component/UseMemo';
 import UseReducer from './component/UseReducer';
 import AdvancedTodolist from './component/AdvancedTodolist';
 import UseContext from './component/UseContext';
+import UseImperativeHandle from './component/UseImperativeHandle';
 
 function App() {
   const [showContent, setShowContent] = useState(false)
@@ -28,6 +29,7 @@ function App() {
   const [showUseReducer, setShowUseReducer] = useState(false)
   const [showAdvancedTodolist, setShowAdvancedTodolist] = useState(false)
   const [showUseContext, setShowUseContext] = useState(false)
+  const [showUseImperativeHandle, setShowUseImperativeHandle] = useState(false)
 
   return (
     <div className="App" style={{ padding: 33 }}>
@@ -63,6 +65,9 @@ function App() {
 
       <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowUseContext(!showUseContext)}>Toggle UseContext</Button>
       {showUseContext && <UseContext/>}
+
+      <Button style={{ margin: 3, fontSize: 10 }} variant="contained" onClick={() => setShowUseImperativeHandle(!showUseImperativeHandle)}>Toggle UseImperativeHandle</Button>
+      {showUseImperativeHandle && <UseImperativeHandle/>}
     </div>
   );
 }
